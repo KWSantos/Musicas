@@ -1,4 +1,4 @@
-package example.com.musics.domain.security;
+package example.com.musics.security;
 
 import java.io.IOException;
 import java.util.Date;
@@ -40,6 +40,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         try {
+            System.out.println("uepa");
             LoginRequestDTO login = new ObjectMapper().readValue(request.getInputStream(), LoginRequestDTO.class);
             UsernamePasswordAuthenticationToken authTOken = new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword());
             Authentication auth = authenticationManager.authenticate(authTOken);

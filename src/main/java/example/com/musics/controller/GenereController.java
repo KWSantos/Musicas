@@ -38,7 +38,7 @@ public class GenereController {
         return ResponseEntity.ok(genereService.getById(id));
     }
 
-    @GetMapping
+    @GetMapping("/search")
     public ResponseEntity<GenereResponseDTO> getByName(@RequestParam String name) {
         return ResponseEntity.ok(genereService.getByName(name));
     }

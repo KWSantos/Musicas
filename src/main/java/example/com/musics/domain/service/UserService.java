@@ -1,5 +1,6 @@
 package example.com.musics.domain.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -7,6 +8,7 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import example.com.musics.domain.dto.user.UserRequestDTO;
 import example.com.musics.domain.dto.user.UserResponseDTO;
@@ -15,6 +17,7 @@ import example.com.musics.domain.exception.ResourceNotFoundException;
 import example.com.musics.domain.model.Users;
 import example.com.musics.domain.repository.UserRepository;
 
+@Service
 public class UserService implements ICRUDService<UserRequestDTO, UserResponseDTO> {
 
     @Autowired

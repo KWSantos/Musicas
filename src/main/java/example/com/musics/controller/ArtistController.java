@@ -38,7 +38,7 @@ public class ArtistController {
         return ResponseEntity.ok(artistService.getById(id));
     }
 
-    @GetMapping("/{name}")  
+    @GetMapping("/search")
     public ResponseEntity<List<ArtistResponseDTO>> getByName(@RequestParam String name) {
         return ResponseEntity.ok(artistService.getByName(name));
     }

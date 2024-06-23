@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import example.com.musics.domain.dto.genere.GenereRequestDTO;
 import example.com.musics.domain.dto.genere.GenereResponseDTO;
@@ -14,6 +15,7 @@ import example.com.musics.domain.exception.ResourceNotFoundException;
 import example.com.musics.domain.model.Genere;
 import example.com.musics.domain.repository.GenereRepository;
 
+@Service
 public class GenereService implements ICRUDService<GenereRequestDTO, GenereResponseDTO>{
 
     @Autowired

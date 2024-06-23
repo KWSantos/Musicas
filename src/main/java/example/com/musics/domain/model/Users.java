@@ -1,13 +1,9 @@
 package example.com.musics.domain.model;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.CascadeType;
@@ -32,7 +28,6 @@ public class Users implements UserDetails{
     private String email;
     @Column(nullable = false)
     private String password;
-    private boolean enabled;
     @ManyToMany
     @JoinTable(
         name = "user_musics",
@@ -41,12 +36,6 @@ public class Users implements UserDetails{
     )
     private List<Music> musics;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "user_roles",
-        joinColumns = @JoinColumn(name = "idUser"),
-        inverseJoinColumns = @JoinColumn(name = "idRole")
-    )
-    private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,43 +49,29 @@ public class Users implements UserDetails{
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
-        roles.forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getName().getValor()));
-        });
-
-        return authorities;
+        return null;
     }
-
     @Override
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     @Override
     public String getUsername() {
         return email;
     }
-
     @Override
     public boolean isAccountNonExpired() {
         return true;

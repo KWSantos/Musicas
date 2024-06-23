@@ -38,7 +38,7 @@ public class ComposerController {
         return ResponseEntity.ok(composerService.getById(id));
     }
 
-    @GetMapping
+    @GetMapping("/search")
     public ResponseEntity<List<ComposerResponseDTO>> getByName(@RequestParam String name) {
         return ResponseEntity.ok(composerService.getByName(name));
     }

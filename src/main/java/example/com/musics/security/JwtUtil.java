@@ -1,4 +1,4 @@
-package example.com.musics.domain.security;
+package example.com.musics.security;
 
 import java.security.Key;
 import java.util.Date;

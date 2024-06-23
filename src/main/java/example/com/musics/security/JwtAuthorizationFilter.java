@@ -1,4 +1,4 @@
-package example.com.musics.domain.security;
+package example.com.musics.security;
 
 import java.io.IOException;
 
@@ -13,12 +13,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class JwtAuthorizationFIlter extends BasicAuthenticationFilter{
+public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 
     private JwtUtil jwtUtil;
-    private MyUserDetailsService userDetailsSecurityServe;
+    private UserDetailsSecurityServe userDetailsSecurityServe;
 
-    public JwtAuthorizationFIlter(AuthenticationManager authenticationManager, JwtUtil jwtUtil, MyUserDetailsService userDetailsSecurityServe) {
+    public JwtAuthorizationFilter(AuthenticationManager authenticationManager, JwtUtil jwtUtil, UserDetailsSecurityServe userDetailsSecurityServe) {
         super(authenticationManager);
         this.jwtUtil = jwtUtil;
         this.userDetailsSecurityServe = userDetailsSecurityServe;
@@ -45,4 +45,3 @@ public class JwtAuthorizationFIlter extends BasicAuthenticationFilter{
         chain.doFilter(request, response);
     }
 }
-

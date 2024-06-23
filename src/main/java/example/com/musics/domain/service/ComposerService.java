@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import example.com.musics.domain.dto.composer.ComposerRequestDTO;
 import example.com.musics.domain.dto.composer.ComposerResponseDTO;
@@ -14,6 +15,7 @@ import example.com.musics.domain.exception.ResourceNotFoundException;
 import example.com.musics.domain.model.Composer;
 import example.com.musics.domain.repository.ComposerRepository;
 
+@Service
 public class ComposerService implements ICRUDService<ComposerRequestDTO, ComposerResponseDTO>{
 
     @Autowired

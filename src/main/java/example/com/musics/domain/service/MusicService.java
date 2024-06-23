@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import example.com.musics.domain.dto.music.MusicRequestDTO;
 import example.com.musics.domain.dto.music.MusicResponseDTO;
@@ -21,6 +22,7 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
+@Service
 public class MusicService implements ICRUDService<MusicRequestDTO, MusicResponseDTO>{
 
     private EntityManager entityManager;
@@ -43,7 +45,7 @@ public class MusicService implements ICRUDService<MusicRequestDTO, MusicResponse
         return mapper.map(optMusic.get(), MusicResponseDTO.class);
     }
 
-    public List<MusicResponseDTO> searchMusics(String name, Integer compositionYear, Artist artist, Composer composer, Genere genere) {
+    public List<MusicResponseDTO> searchMusics(String name, int compositionYear, Artist artist, Composer composer, Genere genere) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Music> query = cb.createQuery(Music.class);
         Root<Music> root = query.from(Music.class);
@@ -52,7 +54,7 @@ public class MusicService implements ICRUDService<MusicRequestDTO, MusicResponse
         if(name != null) {
             predicate = cb.and(predicate, cb.equal(root.get("name"), name));
         }
-        if(compositionYear != null) {
+        if(compositionYear != 0) {
             predicate = cb.and(predicate, cb.equal(root.get("compositionYear"), compositionYear));
         }
         if(artist != null) {
