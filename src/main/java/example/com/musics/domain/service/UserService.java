@@ -74,6 +74,7 @@ public class UserService implements ICRUDService<UserRequestDTO, UserResponseDTO
         Users user = mapper.map(dto, Users.class);
         user.setId(id);
         user.setPassword(dto.getPassword());
+        user.setEmail(dto.getEmail());
         user = userRepository.save(user);
         return mapper.map(user, UserResponseDTO.class);
     }

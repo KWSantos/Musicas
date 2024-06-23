@@ -1,5 +1,6 @@
 package example.com.musics.domain.model;
 
+import example.com.musics.domain.Enum.ETypeRole;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,7 +12,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
+    private ETypeRole name;
 
     public Long getId() {
         return id;
@@ -19,10 +20,10 @@ public class Role {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
+    public ETypeRole getName() {
         return name;
     }
-    public void setName(String name) {
+    public void setName(ETypeRole name) {
         this.name = name;
     }
 

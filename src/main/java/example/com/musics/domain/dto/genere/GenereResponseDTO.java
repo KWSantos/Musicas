@@ -1,0 +1,24 @@
+package example.com.musics.domain.dto.genere;
+
+import java.util.List;
+
+import example.com.musics.domain.model.Music;
+
+public class GenereResponseDTO {
+    
+    private String name;
+    private List<Music> musics;
+
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public List<Music> getMusics() {
+        return musics;
+    }
+    public void setMusics(List<Music> musics) {
+        this.musics = musics;
+    }
+}

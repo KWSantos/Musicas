@@ -33,6 +33,13 @@ public class Users implements UserDetails{
     @Column(nullable = false)
     private String password;
     private boolean enabled;
+    @ManyToMany
+    @JoinTable(
+        name = "user_musics",
+        joinColumns = @JoinColumn(name = "idUser"),
+        inverseJoinColumns = @JoinColumn(name = "idMusic")
+    )
+    private List<Music> musics;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
         name = "user_roles",
@@ -70,7 +77,7 @@ public class Users implements UserDetails{
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
         roles.forEach(role -> {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.add(new SimpleGrantedAuthority(role.getName().getValor()));
         });
 
         return authorities;

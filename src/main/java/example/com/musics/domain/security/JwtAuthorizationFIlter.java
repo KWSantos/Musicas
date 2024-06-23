@@ -9,6 +9,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 import example.com.musics.domain.model.Users;
 import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -44,3 +45,4 @@ public class JwtAuthorizationFIlter extends BasicAuthenticationFilter{
         chain.doFilter(request, response);
     }
 }
+
